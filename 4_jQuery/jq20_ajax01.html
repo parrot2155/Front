@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax01</title>
+    <!-- 비동기통신에 사용되는 친구 -->
+    <!-- 서버가 없기때문에 해볼 수 없지만, XML을 이용해서 해볼거임. -->
+
+
+    <style>
+        *{margin: 0px; padding: 0px;}
+        table{
+            width: 400px;
+        }
+        fieldset{
+            width: 400px;
+        }
+        table tr:nth-child(odd){
+            background-color: orange;
+        }
+        body{
+            width: 1000px;
+            margin: 50px auto;
+        }
+    </style>
+    <script src="./js/jquery-3.7.1.min.js"></script> <!--jquery없으면 ajax 못씀.-->
+    <script>
+        $(function(){
+            $("#emp_search").click(function(){
+                let empid = $("input[name=empid]").val();
+                
+                if(empid.length>2){
+                    //데이터 가져오기
+                    $.ajax({
+                        url:"emplist.xml",    //통신할 페이지 주소
+                        method:"get",         //서버에 요청하는 방식 결정(get, post)
+                        //data:{id:"ptw1234"},  //서버에 전송할 데이터
+                        dataType:"xml",         //전송받을 데이터의 타입(sml, json, html,...)
+                        //async:false           //비동기요청인지 동기요청인지 결정.
+
+                        success:function(data){     //통신에 성공했을 때 실행
+                            let empInfo = $(data).find("EMPLOYEE_ID:contains("+empid+")").parent();
+                            console.log(empInfo);
+
+                            if((empInfo).is("ROW")){
+                                $("table input").each(function(i){
+                                    $(this).val($(empInfo).children().eq(i).text());
+                                }) //출력할 테이블에서 순서를 맞춰놨기 떄문에 반복해서 순서대로 넣었다.
+                            }else{
+                                alert('검색대상이 존재하지 않습니다.')
+                            }
+                        },
+                        
+                        error:function(){       //통신에 실패했을 때 실행
+                            alert("데이터 로드 실패");
+                        }
+                    });
+                }else{
+                    alert("사원번호를 제대로 입력해 주세요.");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>데이터 가져오기</h1>
+    <fieldset>
+        <legend>사원정보 조회</legend>
+        <input type="text" name="empid">
+        <input type="button" id="emp_search" value="조회">
+    </fieldset>
+    <hr>
+    <table>
+        <tr>
+            <th>사원번호</th>
+            <td><input type='text' name="empNum"></td>
+        </tr>
+        <tr>
+            <th>이 름</th>
+            <td><input type="text" name="lastName"></td>
+        </tr>
+        <tr>
+            <th>이 메 일</th>
+            <td><input type="text" name="email"></td>
+        </tr>
+        <tr>
+            <th>전 화 번 호</th>
+            <td><input type="text" name="phone"></td>
+        </tr>
+        <tr>
+            <th>입 사 일</th>
+            <td><input type="text" name="hire"></td>
+        </tr>
+    </table>
+</body>
+</html>

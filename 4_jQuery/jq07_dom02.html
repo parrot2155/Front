@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom02</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(()=>{
+            $("div").find("b").css({"font-size":"30px","color":"red"});
+
+            $("div").children("#chd").text("2. children() 실행");
+
+            $("#chd").parent().css("background-color","skyblue");
+
+            $("p>b").parents("body").css("background-color","khaki"); //parents():부모의 부모의 부모의 부모의...싹다 바뀐다.html까지..
+            
+            $("p").eq(0).next().next().css({"font-size":"30px","color":"blue"}); //next().next()도 잘 된다.
+        })
+    </script>
+</head>
+<body>
+    <pre>
+        <b>find("선택자")
+            선택한 엘리먼트를 기준으로 '자손'들 중에 탐색하고자 하는 엘리먼트를 찾는다.
+        </b>
+        <b>children("선택자")
+            선택한 엘리먼트의 '자식' 요소들 중 탐색하고자 하는 엘리먼트를 찾는다.
+        </b>
+        <b>parent()/parents()
+            선택한 엘리먼트의 부모요소를 찾는다.
+        </b>
+        <b>next()
+            선택한 엘리먼트의 다음에 따라오는 요소를 찾는다.
+        </b>
+    </pre>
+
+    <div>
+        <p><b>1</b></p>
+        <p id="chd">2</p>
+        <p>3</p>
+        <p>4</p>
+        <p>5</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insertion03</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $("button:eq(0)").click(function(){
+                $("#base").after("<div>새로운 엘리먼트</div>");  //해당 엘리먼트 다음에(외부에) 추가가 된다.
+            });
+            //$("<div>새로운 엘리먼트</div>").insertAfter("#base"); 작성 순서가 반대로 작동하는 친구가 있다.
+
+            $("button:eq(1)").click(function(){ //해당 엘리먼트 이전에(외부에) 추가가 된다.
+                $("#base").before("<div>더 새로운 엘리먼트</div>");
+            });
+            //$("<div>더 새로운 엘리먼트</div>").insertBefore("#base");
+        });
+    </script>
+</head>
+<body>
+    <div id="base">
+        <p>외부 삽입</p>
+    </div>
+    <br><hr><br>
+    <button>after()</button>
+    <button>before()</button>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(()=>{
+            //==window.onload=fn(){};
+            //==$(fn(){});
+
+            //가상선택자
+            $("div:eq(0)").css({"border":"1px solid red","width":"400px"});
+            $("#res").css({"border":"1px solid blue","width":"400px","height":"100px"});
+
+        })
+
+        //tag선택
+        function test01(){
+            $("span").css("color","red");
+
+            $("#res").text('$("span").css("color","red");');
+
+        }
+
+        //id선택
+        function test02(){
+            jQuery("#t1").css("color","blue");
+            jQuery("#res").text('jQuery("#t1").css("color","blue");');
+        }
+
+        //class선택
+        function test03(){
+            $('.t2').css("color","green");
+            $('#res').text('$(".t2").css("color","green");');
+        }
+
+        //li span 하위선택자(아래있으면 모두 가능)
+        function test04(){
+            $("li span").css("color","orange");
+            $('#res').text('$("li span").css("color","orange");');
+        }
+
+        //li>span자식선택자(바로 아래 자식만 가능.)
+        function test05(){
+            $("li>span").css("color","violet");
+            $('#res').text('$("li>span").css("color","violet");');
+        }
+
+        //:nth-child로 선택하기
+        function test06(){
+            //:nth-child(n) : 형제 요소 중에n 번째
+            $("li:nth-child(even)").css("background-color","yellow"); //odd:홀수 even:짝수
+            $('#res').text('$("li:nth-child(1)").css("background-color","yellow");'); //n번째일때 인덱스가 아니기 때문에 0부터 시작하지 않음
+        }
+
+        //:first-child로 선택하기. 자식 중 첫번째
+        function test07(){
+            $("li:first-child").css("background-color","lime");
+            $('#res').text('$("li:first-child").css("background-color","gray");');
+        }
+
+        //:last-child로 선택하기. 자식 중 마지막
+        function test08(){
+            $("li:last-child").css("background-color","skyblue");
+            $('#res').text('$("li:last-child").css("background-color","skyblue");');
+        }
+    </script>
+</head>
+<body>
+    <h1>selector 표현식</h1>
+
+    <div>
+        <ul>
+            <li><span>tag로 선택하기</span></li>
+            <li id="t1">id로 선택하기</li>
+            <li class="t2">class로 선택하기</li>
+            <li><span>parent child</span>로 선택하기</li>
+            <li><b><span>parent &gt; child</span></b>로 선택하기</li>
+            <li>:nth(n번째)-child로 선택하기</li>
+            <li>:first-child로 선택하기</li>
+            <li>:last-child로 선택하기</li>
+        </ul>
+    </div>
+
+    <div>
+        <button onclick="test01();">태그 선택(span)</button>
+        <button onclick="test02();">아이디 선택(t1)</button>
+        <button onclick="test03();">클래스 선택(t2)</button>
+        <button onclick="test04();">부모 자식으로 선택</button>
+        <button onclick="test05();">부모 &gt; 자식으로 선택</button>
+        <button onclick="test06();">:nth-child로 선택하기</button>
+        <button onclick="test07();">:first-child로 선택하기</button>
+        <button onclick="test08();">:last-child로  선택하기</button>
+    </div>
+    <h2>코드내용</h2>
+    <div id="res"></div>
+</body>
+</html>

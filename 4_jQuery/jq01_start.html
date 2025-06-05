@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery start</title>
+    <style>
+        img{width: 200px;}
+    </style>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        /*
+            jQuery 기본 작성
+            
+            '$'=='jQuery'
+
+            엘리먼트 탐색 : css + js 합쳐진 형태
+                        $("선택자").함수();
+
+            - 페이지 로드 후 함수 실행
+                js : window.onload=fn(){};
+                jq : jQuery(document).ready(fn(){});
+                        $(fn(){});
+        */
+
+
+        function hl(){
+        //id가 list01인 태그의 자식인 li를 찾아서 
+        //자식요소 중 첫번째 요소의 배경색을 pink로 바꾸자.
+
+        //js
+        // let li = document.getElementById("list01").children[0];
+        // li.style.backgroundColor = "pink";
+
+        //jQuery
+        //let li = $("#list01 > li")[0]; <-이새기 안됨.;;
+        // let li = $("#list01 > li").eq(0);  //eq : 하나 선택하는거
+        // //console.log(li);
+        // li.css("background-color","pink");
+
+        //li태그 전부 배경색 변경
+
+        /*js*/
+        //for(let i=0;i<)
+        // let li = document.getElementsByTagName("li");
+        // console.log(li);
+        // for(let i=0; i<li.length;i++){
+        //     li[i].style.backgroundColor="red";
+        // }
+
+        /*jQuery*/
+        $("li").css("background-color","pink"); //jQuery로 쓰는 함수랑 js로 쓰는 함수랑 다르다.
+
+        }
+
+        $(function(){
+            //페이지 로드 후 실행
+            //alert("hi jQuery!");
+
+            //이미지 클릭하면 숨기기
+            $("img").click(function(){
+                alert("이미지 클릭");
+                $(this).hide();     //"img"말고도 this로도 가능
+            });
+
+        });
+
+        function showImg(){    //숨겨진 이미지 다시 보이기
+            $("img").show();
+        }
+
+        function resize(){
+            // $("img").css("width","100px");
+            // $("img").css("height","100px");     <-보통은 이렇게 안적는다.
+
+            //$("img").css("width","100px").css("height","100px");  //<-이렇게 나열해서 적을 수 있다. 메소드 chaining이라고 함.
+            $("img").css({"width":"100px", "height":"100px", "opacity":"0.5"}); //객체로 묶어서도 가능하다.
+
+        }
+
+        function addImg(){
+            //last : 마지막 요소 찾기
+            $("img").last().after('<img src="../1_html/sample/images/img03.png">');
+        }
+    </script>
+</head>
+<body>
+    <h1>jQuery</h1>
+    <ul id="list01">
+        <li>셀렉터 표현식</li>
+        <li>DOM탐색</li>
+        <li>이펙트</li>
+        <li>비동기통신(ajax)</li>
+    </ul>
+    <button onclick="hl();">li 강조하기</button>
+
+    <hr>
+    <button onclick="showImg();">이미지 보이기</button>
+    <button onclick="resize();">이미지 축소</button>
+    <button onclick="addImg();">이미지 추가</button>
+    <br>
+    <br>
+    <div>
+        <img src="../1_html/sample/images/img03.png">
+        <img src="../1_html/sample/images/img02.png">
+    </div>
+
+</body>
+</html>

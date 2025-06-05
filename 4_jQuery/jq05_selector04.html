@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector4</title>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $("#signal").submit(function(){
+                if($(".infobox").val()==""|| $(".infobox").val()==null){
+                    $(".error").show();
+                    return false;
+                }
+            });                    //?
+
+            $("#confirm").click(()=>{
+                if($("input[name=chk]:checked").length==0){
+                    alert("하나 이상 선택하세요");
+                }else{                          //each 반복하면서 한번씩 fn을 실행한다.
+                    $("input[name=chk]:checked").each(function(i){
+                        let chk = $("input[name=chk]:checked").eq(i);
+                        let type = chk.next().text();   //체크박스 옆에있는 b태그에 있는 텍스트를 가져온다.
+                        let price = chk.val();
+
+                        $("#res").append(`${type}의 가격 : ${price}원<br>`);
+                        
+                    });
+                }
+            })
+        })             
+
+        function allChk(chk){
+            //$("input[name=chk]").prop("checked",chk);
+
+            //each를 이용해서 처리
+            $("input[name=chk]").each(function(i){
+                //$("input[name=chk]").eq(i).prop("checked",chk);
+                //$(this).prop("checked",chk);
+                console.log($(this).attr("checked"));
+
+            });
+        }
+
+
+
+    </script>
+</head>
+<body>
+    <form id="signal" action="" method="">  <!--action 어디로 보낼지 method어떻게 보낼지-->
+        <div>
+            <span class="label">User Id</span>
+            <input type="text" class="infobox" name=""userId>
+            <span class="error" style="color: red; display: none;">반드시 입력하세요!!!</span>
+        </div>
+        <input type="submit" class="submit" value="입력하기">
+    </form>
+    <hr>
+    <fieldset style="width: 300px;">
+        <legend>체크 여부 확인</legend>
+        <input type="checkbox" name="all" onclick="allChk(this.checked);">전체선택<br>
+
+        <input type="checkbox" name="chk"  value="1300"><b>시내버스</b><br>
+        <input type="checkbox" name="chk"  value="2500"><b>광역버스</b><br>
+        <input type="checkbox" name="chk"  value="5000"><b>무궁화기차</b><br>
+
+        <input type="button" value="확인" id="confirm"><br>
+
+        <span>가격</span>
+        <div id="res"></div>
+    </fieldset>
+</body>
+</html>
