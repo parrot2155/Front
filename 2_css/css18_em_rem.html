@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>em, rem</title>
+    <style>
+        .inner{
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: hotpink;
+
+            font-size: 2rem;
+
+            padding: 1em;
+            margin: 1em;
+        }
+        /* 패딩과 마진의em은 본인의 폰트사이즈를 따라간다.(기본값 말고) */
+        .outer{
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 상대적인 길이 단위
+    % : 부모 요소의 크기에 대한 상대적 비율
+    em : 부모의 폰트사이즈 따라
+    rem : 루트(html태그. 기본) 폰트사이즈 따라
+
+        20px: 1em = 1rem = 20px
+        20px: 0.5em = 0.5rem = 10px
+
+        브라우저 기본 글씨크기가 16인데 2em이면 32.
+    -->
+    <div class="outer">
+        <div class="inner">테스트</div>
+    </div>    
+</body>
+</html>

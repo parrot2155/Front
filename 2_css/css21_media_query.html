@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>media query</title>
+    <style>
+        img{
+            width: 200px;
+        }
+
+        @media screen and (min-width:840px){
+            img{
+                width: 400px;
+            } /*화면크기가 840이상이면 너비를 400으로 출력함 */
+        }
+
+        /* 화면의 넓이가 1200px 이상일 때는 이미지의 width를 600px로, opacity:0.5로 */
+        @media screen and (min-width:1200px){
+            img{
+                width: 600px;
+                opacity: 0.5; /*불투명도*/
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="./resource/css02.css" media="screen and (max-width:840px)">
+</head>
+<!--미디어 쿼리 : 미디어 타입 + 조건에 대한 물음(쿼리)
+    @media 미디어타입 and (조건에 대한 물음){조건을 만족할 떄 추가로 적용할 스타일} -->
+
+<body>
+    <img src="../1_html/sample/images/Image20250422110741.png">
+    <hr>
+    <div id="sid02">
+        div div div div div
+    </div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+/* 타입(태그) 선택자 */
+pre{
+    text-align: center;
+
+}
+
+h1{
+    text-align: right;
+    color: blue;
+}
+
+/* id 선택자 */
+#sid01{
+    color: green;
+}
+
+#sid02{
+    color: blueviolet;
+}
+
+#sid03{
+    color: brown;
+}
+
+/* class 선택자 */
+.scls{
+    color: pink;
+}
+
+.scls01{
+    background-color: black;
+}
+
+#sclsid{
+    color: black;
+}
+
+/* 전체 선택자 (되게 심플함) *(별)을 사용 */
+/* *{
+    text-align: right;
+    margin: 0;
+    padding: 0;
+}                           (주석처리해뒀음)*/
+
+
+/* 자식 선택자 (부모선택자 중에서 해당하는 자식요소만 선택하기) */
+/*     >  : 얘가 자식선택해줌     */
+#at > p{          /*id가 at인 부모의 p인 자식만 선택*/
+    color: orange;
+}
+
+/* 인접 선택자(동위 선택자) */
+/* 선택자 + 선택자     :  다음에 오는 태그를 선택하는법*/
+h3 +b{
+    background: black;
+    color: white;
+}
+span+b{
+    background: yellow;
+    color: magenta;
+}
+
+/* 속성 선택자 */
+/* []대괄호 */
+p[name]{
+    color: skyblue;
+}
+p[name="b"] /*속성 값을 특정해서 지정해줄 수도 있다!*/{
+    background-color: black;
+}
+
+/* 가상(반응)클래스 선택자 */
+a:link /*방문 전 링크*/{
+    color: pink;
+    font-size: 20pt;
+}
+a:hover/*마우스가 특정 태그 위에 올라가면(hovering)*/{
+    background-color: purple;
+}
+
+input:checked/*체크박스를 선택하면*/{
+    width: 200px;
+    height: 200px;
+}
+
+/* 종속 선택자 */
+li.acls01{
+    background-color: green;
+}
+li.acls02#sidli{
+    font-size: 30px;
+}
+
+/* 하위 선택자 (하위에 있는 모든 해당 태그(자식+자손 모두)를 선택)*/
+/* 한칸 띄어쓰기 */
+div span{
+    background-color: brown;
+}
+
+/* 그룹 선택자 */
+/* , */
+p,pre,strong{
+    color: lime;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variable image</title>
+    <style>
+        img{
+            /* width: 200px; */
+            width: 100%;
+            max-width: 800px;
+        }
+        div{
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <img src="../1_html/sample/images/Image20250422110741.png">
+    <div>
+        <img src="../1_html/sample/images/Image20250422110741.png">
+    </div>
+
+    <!-- 다중이미지 리소스 처리 -->
+    <picture>
+        <source srcset="../1_html/sample/images/img01.png" media="(min-width:800px)"><!--조건에 맞을때 보여줄 이미지-->
+        <img src="../1_html/sample/images/Image20250422110741.png"><!--기본이미지-->
+    </picture>
+</body>
+<!-- 반응형 웹이다! -->
+</html>

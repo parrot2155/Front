@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transform</title>
+    <style>
+        .trans{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            color: white;
+            font-size: 30pt;
+            word-wrap: break-word;/*특정 공간을 벗어나는 경우 밑으로 삐져나가지 않게 해줌*/
+        }
+        /* translate 움직이기 (x,y)값 */
+        #tlate{
+            transform: translate(50px,50px);
+        }
+        #trotate{
+            transform: rotate(175deg);/*회전회오리(시계방향). 잘 돌아가네.*/
+        }
+        #tscale{
+            transform: scale(1.1,0.5);/*크기 바꾸기.*/
+        }
+        #tran:hover{
+            width: 800px;
+            background-color: blue;
+            transform: translate(300px,0px);
+        }
+        #tran{
+            transition: width 0.5s, background 1.5s linear, transform 1.5s;
+        }
+
+        li{
+            width: 445px;
+            background-color: pink;
+            margin-top: 10px;
+            padding-right: 5px;
+            font-size: 30pt;
+            font-weight: bold;
+            list-style: none;
+            cursor: pointer;/*crosshair, help등등이 있다.*/
+            transition: width 0.5s linear, color 1s linear, letter-spacing 1s linear;
+        }
+        li:hover{
+            width: 700px;
+            color: blue;
+            letter-spacing: 5px;/*글자간 간격*/
+        }
+
+    </style>
+</head>
+<body>
+    <h2>transform -  translate</h2>
+    <div id="tlate" class="trans">translate : 위치 이동</div>
+    <br><br>
+    <h2>transform - retate</h2>
+    <div id="trotate" class="trans">rotate : 회전</div>
+
+    <h3>transform - scale</h3>
+    <div id="tscale" class="trans">scale : 크기</div>
+
+    <h3>transition 속성 전환</h3>
+    <div id="tran" class="trans">transition</div>
+
+    <hr>
+    <div>
+        <h2>Moving Menu</h2>
+        <ul>
+            <li>COMPANY</li>
+            <li>PRODUCT</li>
+            <li>SERVICE</li>
+            <li>CUSTOMER SUPPORT</li>
+            <li>COMMUNITY</li>
+        </ul>
+    </div>
+</body>
+</html>

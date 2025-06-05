@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice2</title>
+    <style>
+        div{
+            width: 400px;
+            height: auto;
+            padding-top: 1px;
+            padding-left: 30px;
+            padding-bottom: 1px;
+            background-color: olivedrab;
+            border-radius: 10px;
+        }
+        dd{
+            margin: 0;
+            padding: 1px;
+            width: 300px;
+            border: solid rgb(215, 221, 215) 1px;
+            background-color: rgb(137, 196, 137);
+            border-radius: 5px;
+        }
+        pre{
+            width: 70px;
+            text-align: center;
+            color: white;
+            background-color: rgb(22, 78, 22);
+            border-radius: 5px;
+        }
+        form{
+            text-align: right;
+        }
+        p{
+            padding: 0;
+            margin: 0;
+            width: 100px;
+            text-align: left;
+        }
+        
+
+        
+        
+    </style>
+</head>
+<body>
+    <h2>CSS3</h2>
+    <div>
+        <dl>
+            <dt>Step 1 : 로그인 정보</dt>
+            <dd><form><p>아이디</p> <input type=text></form></dd>
+            <dd><form><p>비밀번호</p> <input type=password></form></dd>
+            <dd><form><p>비밀번호 확인</p> <input type=password></form></dd>
+            <dd><form><p>회원 등급</p> <select>
+                <option value="jung">정회원
+                <option value="jun">준회원
+                <option value="b">비회원
+                </option></select></form>
+            </dd>
+            <dt>Step 2 : 개인 정보</dt>
+            <dd><form><p>이름</p><input type="text" placeholder="5자미만 공백없이"></form></dd>
+            <dd><form><p>메일 주소</p><input type="email"></form></dd>
+            <dd><form><p>연락처</p><input type="tel"></form></dd>
+            <dt>Step 3 : 코딩 숙련도(상, 중, 하)</dt>
+            <dd>
+                <input type="range" min="0" max="100" value="50" step="10" name="level">
+            </dd>
+        </dl>
+        <pre>제출</pre>
+    </div>
+</body>
+</html>
