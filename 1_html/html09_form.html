@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+</head>
+<body>
+    <h1>폼 관련 태그</h1>
+    <!-- 
+    form태그는 html에서 사용자가 입력할 수 있는 양식을 제공하는 태그.
+
+    form태그 내의 input이라는 태그를 이용하여 사용자가 입력한 정보를 서버로 전달하는 역할도 한다.
+        * action 속성 : 입력된 값들을 어디로 데이터를 전달할지 설정
+        * method 속성 : get/post 등과 같이 어떤 방식으로 데이터를 전달할지 설정
+    -->
+    <form method="post">
+        검색할 내용 : <input type="text" name="search"> &nbsp;&nbsp;&nbsp;&nbsp; 
+        <input type="submit" value="검색">
+    <!-- 메소드 형식이 get방식으로 넘어감(url 뒤에 ?물음표가 붙음) -->
+    </form>
+    <!-- submit 버튼을 클릭했을 때 form의 action이라는 속성에 지정한 경로로 
+     method라는 속성에 설정한 방식으로 input태그의 값을 전달한다. -->
+
+    <hr>
+
+    <form>
+        <fieldset>
+            <legend>필드셋의 제목을 작성하는 부분</legend>
+            <label>입력1 : </label><input type="text"><br>
+            <label>입력2 : </label><input type="text"><br>
+            <label>입력3 : </label><input type="text"><br>
+        </fieldset>
+        <fieldset>
+            <legend>필드셋으로 묶은 영역별로 구분</legend>
+            <label>입력1 : </label><input type="text"><br>
+            <label>입력2 : </label><input type="text"><br>
+            <label>입력3 : </label><input type="text"><br>
+        </fieldset>
+    </form>
+
+    <hr>
+
+    <form method="post">
+        <h2>text와 관련된 input태그</h2>
+        <p>type="text"</p>
+        <p>- 한 줄짜리 텍스트를 입력할 수 있는 텍스트 박스</p>
+        I D : <input type="text" name="userid" placeholder="아이디를 입력하세요" maxlength="5"
+                value="현대이지웰" size="30" autofocus>
+        <!--name<-이 녀석 되게 중요한 친구, 없으면 데이터가 제대로 못넘어감
+            placeholder<- 입력하는 네모박스에 설명넣는거
+            value<- 텍스트박스에 미리 들어가있음, 대신 placeholder는 안보임-->
+        <p>type="password"</p>
+        <p>- 비밀번호를 입력할 수 있는 텍스트 박스</p>
+        P W : <input type="password" name="userpw" placeholder="비밀번호를 입력하세요" maxlength="15"
+                size="15">
+
+        <br>
+        <p>"search", "email"...</p>
+        <p>- 겉모습은 type="text"와 유사. 각각의 정보에 맞게 분화된 기능을 제공하는 텍스트 상자</p>
+        검색 : <input type="search" name="seachtxt" placeholder="검색할 내용을 입력"><br><!--search : 텍스트박스 우측에 지우기 x버튼있음-->
+        이메일 : <input type="email" name="email"><br><!--이메일 형식이 아니면 메세지가 뜸-->
+        전화번호 : <input type="tel" name="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"><br><!--모바일에서 키보드 넘버패드가 뜸,but 유효성검사 없음-->
+        <br>
+        <input type="submit" value="확인">
+    </form>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <form>
+        <h2>숫자와 관련된 input 태그</h2>
+        <h3>"number", "range"</h3>
+        <p>number - 입력창에 숫자 입력</p><!--숫자만 입력 가능+우측 스핀박스-->
+        수량 : <input type="number" min="0" max="100" step="10" value="0"><br><!--step:몇개씩 증감-->
+        
+        <P>range - 슬라이드바를 통해 숫자 지정</P>
+        점수 : <input type="range" min="0" max="100" value="50" step="10" name="score">
+        <input type="submit" value="ok">
+    </form>
+    <br>
+    <hr>
+    <br>
+    <br>
+    <form>
+        <h2>날짜/시간 관련된 input</h2>
+        <h3>"date", "month", "week", "time", "datetime-local"</h3>
+        date : <input type="date" name="date"><br><!--그러나 문자타입으로 저장됨-->
+        month : <input type="month" name="month"><br>
+        week : <input type="week" name="week"><br><!-- nnnn-Wnn형식으로 저장 -->
+        time : <input type="time" name="time"><br>
+        datetime-local : <input type="datetime-local" name="datetime-local"><br>
+        <br>
+        <input type="submit" value="ok">
+    </form>
+
+    <br>
+    <hr>
+    <br>
+    <form>
+        <h2>라디오버튼, 체크박스</h2>
+        <h3>"radio"</h3><!--여러개중에 하나 선택할 때-->
+        사이즈 : <input type="radio" name="size" value="s">Small &nbsp;&nbsp;
+                <input type="radio" name="size" value="m" checked>Medium &nbsp;&nbsp;
+                <input type="radio" name="size" value="l">Large <!--하나의 name으로 묶는다.-->
+
+        <h3>"checkbox"</h3><!--id 와 for로 텍스트를 클릭했을 때도 선택되도록 할 수 있다.(라디오, 체크박스 둘다 가능)-->
+        추가토핑 : <input type="checkbox" name="topping" value="d" id="dd"><label for="dd">떡 추가</label>&nbsp;
+                   <input type="checkbox" name="topping" value="o" id="od" checked><label for="od">오뎅 추가</label>&nbsp;
+                   <input type="checkbox" name="topping" value="c" id="cs"><label for="cs">치즈 추가</label>&nbsp;
+                   <input type="checkbox" name="topping" value="v" id="vg"><label for="vg">소세지 추가</label>&nbsp;
+        <br>
+        <input type="submit" value="ok">
+    </form>
+
+    <br>
+    <hr>
+    <br>
+    <form>
+        <h2>그 밖에 input태그들...</h2>
+        <h3>"color","file","hidden"</h3>
+        색상 선택 : <input type="color" name="color"><br>
+        파일 선택 : <input type="file"><br>
+        안보임 : <input type="hidden" name="hiddenval" value="1"><br>
+        <h3>"button"</h3>
+        <input type="button" value="button">
+        <br>
+        <input type="submit" value="ok"> &nbsp; <input type="reset" value="취소">
+    </form>
+    <button>버튼</button>
+    <br>
+    <hr>
+    <br>
+    <!-- 
+        select태그와 option태그
+        사용자가 내용을 직접 입력하는 것은 아니고 여러 옵션 중에서 선택하게 하고 싶을 때. 드롭다운 리스트
+     -->
+    <from>
+        <h3>기본 select&option 태그</h3>
+        나라 :
+        <select>
+            <option value="ko">한국</option><!--직접 값을 입력하는 것이 아닌 이상 직접 value값을 넣어줘야한다.-->
+            <option value="us">미국</option>
+            <option value="jp">일본</option>
+            <option value="uk">영국</option>
+            <option value="fr">프랑스</option>
+        </select>
+        <h3>select 태그의 속성</h3>
+        <select size="3" multiple><!--size:한번에 보여지는 개수, multiple:여러개 선택가능-->
+            <option value="ko">한국</option>
+            <option value="us">미국</option>
+            <option value="jp">일본</option>
+            <option value="uk">영국</option>
+            <option value="fr">프랑스</option>
+        </select>
+    </from>
+
+    <!-- 여러 줄의 텍스트 처리 textarea태그 -->
+     <h2>textarea태그</h2>
+     <p>input의 type="text"와 비슷하지만 여러 줄의 텍스트를 입력할 수 있다.</p>
+     <form>
+        <textarea name="content" cols="30" rows="5" style="resize: none;"></textarea><!--cols:가로길이, rows:세로길이-->
+        <br>
+        <input type="submit" value="ok">
+     </form>
+
+</body>
+</html>

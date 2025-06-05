@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grouping</title>
+    <style type="text/css">
+        div{
+            border: 1px dashed red;
+            margin: 10px;
+        }
+        /* id는 #으로 #표현 */
+        #body{
+            height: 400px;
+        }
+        #content{
+            height: 90%;
+            width: 60%;
+            float: left; /*포함된 구역 내에서 어느 방향으로 배치될건지*/
+        }
+        #aside{
+            height: 90%;
+            width: 30%;
+            float: right;
+        }
+
+    </style>
+</head>
+<!-- 원래 헤더, 풋 이런데에 내용이 들어감.
+        근데 div태그로 구역 쉽게 만들어서 넣음.
+        화면의 구역, 구조를 잡는 일을 배울거다. -->
+<body>
+    <!-- 
+    시맨틱 태그와 화면구조
+    header : 제목, 로고, 아이콘 ...
+    nav : 탐색링크
+    section : 컨텐츠를 주제별로 묶고 싶은 경우
+    article : 컨텐츠를 집어넣는 구역. 독립적으로 사용할 수 있는 내용(컨텐츠)을 정의
+    aside : 광고나 메인컨텐츠와 상관없는 내용을 정의
+    footer : 저자, 저작권, 연락처, 주소 등을 정의
+    -->
+    <div id="header">
+        <h1>제목</h1>
+        <div>
+            <span><a href="">메뉴1</a></span>
+            <span><a href="">메뉴2</a></span>
+            <span><a href="">메뉴3</a></span>
+            <span><a href="">메뉴4</a></span>
+            <span><a href="">메뉴5</a></span>
+        </div>
+    </div>
+    <hr>
+    <div id="body">
+        <div id="content">
+            <div>컨텐츠1</div>
+            <div>컨텐츠2</div>
+            <div>컨텐츠3</div>
+        </div>
+        <div id="aside">광고</div>
+    </div>
+    <hr>
+    <div id="footer">
+        <p>copyright &copy; all right reserved...</p>
+    </div>
+</body>
+</html>
