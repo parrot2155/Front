@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>variable</title>
+    <script>
+        console.log(test); //undefine이라고 뜸. var호이스팅 : 값은 할당되지 않았지만 아래에서 선언은 되었으니까 맨 위로 끌어올려서 일단 있는 변수이니까 에러없이 출력은 해줄게. 자바스크립트의 특징임www
+        var test = 1;   
+        //이름(변수명)이 test인 변수에다 숫자 1을 저장(대입)
+        // '=' : 대입연산자.
+        console.log(test);
+        test = 10;
+        // console.log(test+1); //f12눌러서 콘솔창에서 확인 가능. (아래 연습을 위해 주석차리).
+
+        //변수 선언(만들겠다.)하기
+        //키워드(var, let, const 세가지가 있다.const는 특별한 친구) 변수명;
+
+        //선언과 동시에 초기화(=초기값을 넣는다.)
+        //키워드 변수명 = 값;
+        //console.log(test2); 에러뜸. 없으니까! 이게 직관적이고 호이스팅 없고 좋음.
+        let test2 = 512; 
+        console.log(test2);
+        test2 = 20;
+        console.log(test2);
+
+        const test3 = 3;
+        console.log(test3);
+        //test3 = 30; //에러남. 변경 업데이트 불가! immutable변수. 나쁜짓 못해
+        
+        {
+            var no = 10;
+            let no2 = 20;
+            const no3 = 30;
+        }
+        console.log(no);  // var<--이세끼는 에러가 없음. 그냥 무조건 뭐라도 됨
+        // console.log(no2); //에러뜸. 블럭 밖이라 블럭 안의 값을 모름 
+        // console.log(no3); //에러
+
+        let variable = 10; //이게 전역변수. 값 유지, 공용으로 사용 가능하다.
+
+        function test01(){
+            variable = variable + 5; //여기서도 쓸 수 있고,
+            console.log(variable);
+        }
+        function test01_1(){
+            variable = variable + 5;  //여기서도 쓸 수 있다.
+            console.log(variable);
+        }
+        
+        function test02(){
+            let variable2 = variable + 100; //지역변수
+            document.getElementById("res01").innerHTML = "<b style='color:red;background:yellow;'>"+variable2+"</b>";
+        }
+
+        function test03(){
+            //문자
+            let variable3 = "문자";
+            console.log(variable3 + " : " + typeof variable3); //string은 문자(문자,문자열 구분 없음)
+
+            //숫자
+            variable3 = 5; //정수 실수 구분없이 number 이다.
+            console.log("'"+variable3+"' : " + typeof variable3);
+            console.log(`${variable3} : ${typeof variable}`); //   `  : 백틱이라고 함.
+            //백틱`으로 묶고 ${어쩌구저쩌구}로 연산자 넣기 가능
+
+            //논리
+            variable3 = true; //boolean
+            console.log("'"+variable3+"' : " + typeof variable3);
+
+            //null 
+            variable3 = null; 
+            console.log("'"+variable3+"' : " + typeof variable3); 
+
+            //객체
+            // - 배열
+            variable3 = [1,2,3,4]; //배열도 하나의 객체로 인식됨.(덩어리)
+            console.log("'"+variable3+"' : " + typeof variable3);
+            // - 객체
+            variable3 = {name:'박태욱', age:86};
+            console.log("'"+variable3+"' : " + typeof variable3);
+
+            //함수
+            variable3 = function(){alert("변수의 타입");}  //변수에 함수를 저장할 수 있음.개꿀 기능
+            console.log("'"+variable3+"' : " + typeof variable3);
+ 
+        }
+
+    </script>
+</head>
+<!-- 변수 라는 메모리 방을 만들어놓고 데이터를 넣어놀 수 있다. -->
+<body>
+    <h1>변수 사용</h1>
+    <h3>변수 선언 규칙</h3>
+    <ol>
+        <li>대소문자 구분. Aa aa 이 두개는 다름.</li>
+        <li>영문, $, _(underbar)로 시작해야 한다.(시작할때 숫자는 안됨)</li>
+        <li>영문, $, _언더바, 숫자를 포함하여 생성가능하다.</li>
+        <li>키워드나 예약어('function'같은거)를 사용할 수  없다.</li>
+    </ol>
+    <h3>변수의 범위</h3> <!--어디까지 쓸 수 있느냐? 를 알아보자-->
+    <ol>
+        <li>
+            전역 변수 : 다른 함수들에서 공용으로 사용할 수 있다.(값이 유지된다)
+            <button onclick="test01_1();">+5버튼</button>
+        </li>
+        <li>
+            지역변수 : 함수나 객체 내부에 선언되고 실행이 종료되면 사라진다. 
+            <button onclick="test02();">확인</button>
+        </li>
+        <div id="res01"></div>
+    </ol>
+    <h3>변수 선언과 저장</h3>
+    <ol>
+        <li>let,var,const 키워드를 사용하여 변수를 선언한다.</li>
+        <li>
+            변수의 타입은 저장되는 데이터의 타입에 따라 결정된다. <!--방 하나 만들어놓고 돌림빵 가능함-->
+            <button onclick="test03();">확인</button>
+        </li>
+    </ol>
+
+    <h3>Infinity, NaN</h3> <!--특수값. 마치 값인것 처럼 인식됨-->
+    <ol>
+        <li>Infinity : 양의 무한대, 0으로 나누었을 때</li>
+        <li>
+            NaN (Not a Number) : 숫자가 아닌값
+            <button onclick="test04();">확인</button>
+        </li>
+    </ol>
+    <script>
+        function test04(){
+            const infi = 1/0;
+            console.log(infi+typeof infi);
+            const nan = 'String' / 2;
+            console.log(nan+typeof nan);
+        }
+    </script>
+
+</body>
+</html>

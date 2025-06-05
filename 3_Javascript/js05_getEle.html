@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get element</title>
+    <style>
+        .area{
+            width: 300px;
+            height: 100px;
+            border: 2px solid black;
+        }
+    </style>
+    <script>
+        //function accId(){}  <-얘랑 똑같다.
+        const accId = () => {
+            // document.getElementById("area1").style.backgroundColor="yellow";
+            // document.getElementById("area1").innerHTML += "아이디로 접근 성공!!!<br>"; //여러번 클릭해도 덮어씌워지는거임. +=를 써서 반복추가하기 가능.
+
+            var doc = document.getElementById("area1");
+            doc.style.backgroundColor="yellow";
+            doc.innerHTML += "아이디로 접근 성공!!!<br>";
+            //console.log(doc);
+        }
+
+        function accTagName(){
+            let li1 = document.getElementsByTagName("li")[0];//접근한 li태그 중 첫번째
+            let li2 = document.getElementsByTagName("li")[1];
+            let li3 = document.getElementsByTagName("li")[2]; 
+            console.log(li1);
+            console.log(li2);
+            console.log(li3);
+
+            var list = document.getElementsByTagName("li");
+            console.log(list);
+
+            //찾은 li태그들 첫번째부터 마지막까지 배경색을 변경
+            //[1]
+            // list[0].style.backgroundColor="red";
+            // list[1].style.backgroundColor="green";
+            // list[2].style.backgroundColor="blue";
+
+            //[2] 반복문 for문
+            let tmp = 50;
+            //for문 문법 : for(초기식,조건식,증감식){반복하여 실행시킬 구문;}
+            for(let i=0; i<list.length; i++){
+                console.log("i="+i);
+                list[i].style.backgroundColor="rgb(130,200,"+ tmp +")";
+                tmp = tmp + 30;
+            }
+        }
+
+        const accName = ()=>{
+            let hobby = document.getElementsByName("hobby");
+            console.log('hobby의 길이 : '+ hobby.length);
+
+            let checkItem="";
+            for(let i=0; i<hobby.length; i++){
+                //체크한 벨류값만 가져오기
+                if(hobby[i].checked == true){
+                    checkItem += hobby[i].value + "선택함 <br>";
+                }
+            }
+            document.getElementById("area2").innerHTML = checkItem;
+
+        }
+        
+        function readVal(){
+            var input = document.getElementById("username");
+            // console.log("이름은 "+input.value);
+            if(input.value == ""){
+                alert("이름을 입력하세요.");
+                input.focus();
+            }else{
+                alert(input.value+"님 환영합니다!");
+            }
+        }
+
+        const accQs = ()=>{
+            //css의 선택자
+            const doc = document.querySelector("#qs");
+            console.log(doc);
+
+            const list = document.querySelectorAll("li");
+            console.log(list);
+        }
+    </script>
+    <!-- Document Object Model : DOM 문서 객체 모델 :문서를 객체화시켜서 관리한다. 원하는 태그를 찾는거다.-->
+     <!-- Browse Object Model : BOM-->
+
+
+     <!-- 배열, 리스트 -->
+</head>
+<body>
+    <h1>HTML태그에 접근하기</h1>
+
+    <h2>id로 접근하기</h2>
+    <div id="area1" class="area"></div>
+    <button onclick="accId()">아이디로 접근</button>
+
+    <h2>태그이름으로 접근하기</h2>
+    <ul>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+    </ul>
+    <button onclick="accTagName()">태그명으로 접근</button>
+
+
+    <h2>name으로 접근하기</h2>
+    <form>
+        <fieldset>
+            <legend>취미</legend>
+            <table>
+                <tr>
+                    <td><input type="checkbox" name="hobby" value="game" id="game"><label for="game">게임</label></td>
+                    <td><input type="checkbox" name="hobby" value="movie" id="movie"><label for="movie">영화</label></td>
+                    <td><input type="checkbox" name="hobby" value="book" id="book"><label for="book">독서</label></td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+    <div id="area2" class="area"></div>
+    <button onclick="accName()">name으로 접근</button>
+
+
+    <h2>text박스의 value값 읽어오기</h2>
+    <form>
+        이름 : <input type="text" name="username" id="username"> <br>
+        <input type="button" onclick="readVal()" value="value값 확인">
+    </form>
+
+    <h2>querySelector로 접근하기</h2>
+    <p id="qs">querySelector로 접근</p>
+    <button onclick="accQs()">qs로 접근</button>
+</body>
+</html>

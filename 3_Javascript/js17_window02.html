@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window02</title>
+    <script>
+        function test(){
+        let val = document.getElementsByName("test")[0].value;
+        window.opener.document.getElementById("tt").innerHTML=val;
+        close();
+        }
+    </script>
+</head>
+<body>
+    <h1>팝업창</h1>
+    <input type="text" name="test">
+    <input type="button" onclick="test();" value="전달">
+    <input type="button" onclick="self.close();" value="창닫기">  <!--self.close():창닫아주는 애-->
+
+</body>
+</html>

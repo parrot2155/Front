@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rolling</title>
+    <style>
+        a{cursor: pointer;}
+        #gallery{width: 200px; vertical-align: middle;}
+        h1{display: inline-block;}
+    </style>
+    <script>
+        let num = 1;
+        
+        function next(){
+            num = num+1;
+            if(num>3){
+            num=1;
+        }
+            document.getElementById("gallery").src="../1_html/sample/images/img0"+num+".png";
+            return false; //다음 작동을 하지 않게 해줌. 이벤트 처리 취소시켜버림.
+        }
+
+        function prev(){
+            
+            num = num-1;
+            if(num<1){
+                num=3;
+            }
+            document.getElementById("gallery").src="../1_html/sample/images/img0"+num+".png";
+        }
+    </script>
+</head>
+<body>
+    <div id="galleryWrap">
+        <h1><a onclick="prev()"> < </a></h1>
+        <img src="../1_html/sample/images/img01.png" id="gallery">
+        <h1><a onclick="return next()" href="https://www.naver.com"> > </a></h1>
+    </div>
+</body>
+</html>

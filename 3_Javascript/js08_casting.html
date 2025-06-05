@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>casting</title>
+    <script>
+        function casting(){
+            //[묵시적 형변환]
+            //문자열과 숫자의 +연산
+            //문자열 + 숫자 => 문자열
+            //문자열 + 숫자 + 숫자 => 문자열숫자숫자
+            //숫자 + 숫자 + 문자열 => 숫자합문자열
+
+            let val = 7 + 7; //숫자 + 숫자
+            console.log("val:" + typeof val + val);
+            val = 7 + "7"; //숫자 7 + 문자7
+            console.log("val:" + typeof val + val);
+            val = "7" + 7; //문자7 + 숫자7
+            console.log("val:" + typeof val + val);
+            val = "7" + 7 + 7;
+            console.log("val:" + typeof val + val);
+            val = "7" + (7 + 7); //괄호로 우선적으로 계산할 수 있다.
+            console.log("val:" + typeof val + val);
+
+            //[명시적 형변환]
+            let str = "10";
+            console.log(str+10);
+
+            //강제적으로 타입을 바꿔버리자~~!~
+            str = Number(str);
+            console.log(str+10); //1010출력 
+
+            str = "10개";
+            str = Number(str);
+            console.log(str); //NaN(Not a Number) 출력.
+
+            str = "10";
+            str = parseInt(str); //parseInt:정수로 바꿉니다., parseFloat:실수로 바꿉니다.
+            console.log(str);
+
+            let num = 20;
+            //=>String 타입으로 변경
+            //num = String(num);
+            
+            console.log(String(num));
+            console.log(num+""); //숫자 + 문자 합쳐서s 문자열로 만든다.
+            
+        }
+    </script>
+</head>
+<body>
+    <h2>형변환</h2>
+    <h3 onclick="casting()">묵시적 형변환(자동형변환) and 명시적 형변환(강제형변환)</h3>
+</body>
+</html>

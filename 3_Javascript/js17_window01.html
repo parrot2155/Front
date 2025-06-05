@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window01</title>
+    <style>
+        #regist{
+            border: 1px solid black;
+            background-color: pink;
+            position: absolute;
+            top: 200px;
+            left: 300px;
+            display: none;  /*숨기기*/
+        }
+    </style>
+    <script>
+        function openWin(){
+            let url="js17_window02.html";
+            let name="";
+            let prop="width=500px, height=500px, top=200px, left=600px";
+            window.open(url,name,prop);
+        }
+
+        function registForm(){
+            //숨겨둔 #regist를 보이게 하자.
+            document.getElementById("regist").style.display="block";
+            document.body.style.background = "gray";
+
+            //버튼 비활성화
+            let btns = document.getElementsByName("btn");
+            //btns[0].disabled = "disabled";
+            for(let i in btns){              //for in 문        //여러개 다 비활성화하기
+                btns[i].disabled = "disabled";
+            }
+            // for(let i=0; i<btns.length; i++){
+            //     btns[i].disabled = "disabled";
+            // }
+        }
+        
+        function idCheck(){
+            open("js17_window03.html","","width=300px height=300 top=200px, left=600px");
+        }
+    </script>
+</head>
+<body>
+    <h1>window객체</h1>
+    <pre>
+        - [프로퍼티]                          <!--window아래 docunent등등 포함되어있음-->
+            - document
+            - history
+            - location
+            - screen
+            ...
+          [메소드]
+            - alert()
+            - confirm()
+            - prompt()
+            - close()
+            - setInterval()
+            ... <!--다양한 기능들이 윈도우 객체내에 존재한다.-->
+    </pre>
+
+    <div id="f1">
+        <h1>팝업창 만들기</h1>
+        <button onclick="openWin();" name="btn">창열기</button>
+        <div id="tt"></div>
+        <h1>회원가입하기</h1>
+        <button onclick="registForm();" name="btn">회원가입</button>
+
+        <!-- 회원가입 폼-->
+         <div id="regist">
+            <form>
+                <table>
+                    <caption>회원가입</caption>
+                    <tr>
+                        <td>아이디</td>
+                        <td>
+                            <input type="text" name="id" readonly="readonly" onclick="alert('중복체크를 해주세요.')"> <!--readonly : 사용자의 직접 입력만 금지.-->
+                            <input type="button" value="중복체크" onclick="idCheck();">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>패스워드</td>
+                        <td>
+                            <input type="password" name="pwd" style="color: red;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" align="center">
+                            <input type="button" value="확인">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+         </div>
+    </div>
+</body>
+</html>
+<!-- Live Server 익스텐션 사용해서 실행해보기 -->
+ <!-- 127.0.0.1 : 5500      <--로컬 호스트임 -->
+  <!-- 포트넘버는 컴퓨터 내의 프로그램을 구분하는 숫자. -->

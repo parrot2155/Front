@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>popup01</title>
+    <script>
+        function popupTest(){
+            window.open("js16_popup02.html","_blank","width=200px,height=200px"); //_self : 현재 탭에서 바로 띄우기, _blank : 새창으로 띄우기.
+
+        }
+    </script>
+</head>
+<body>
+    <!-- window.open() : 팝업창 띄우기. 우리가 만든게 아니라 이미 제공되어있다. -->
+     <button onclick="popupTest();">팝업</button>
+</body>
+</html>

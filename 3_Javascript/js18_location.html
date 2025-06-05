@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location</title>
+    <script>
+        function locTest(){
+            let loc = location.herf;  //a태그처럼 화면 바꿔준다. ->화면이 보여지는 전체 url을 바꿔주는거임.
+
+            //alert(loc);
+            //location.href="https://www.google.com";
+
+            // loc = location.host; //host의 ip주소를 보여줌
+            // alert(loc);
+
+            location.reload(); //새로고침
+        }
+    </script>
+</head>
+<body>
+    <h1>location 객체</h1>
+
+    <a href="https://www.naver.com">네이버</a>
+
+    <button onclick="locTest();">이동</button>
+</body>
+</html>
+
+<!-- BOM : 브라우저 관련 작동, DOM : 문서 관련 작동 -->

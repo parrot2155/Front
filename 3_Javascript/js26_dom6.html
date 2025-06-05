@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom6</title>
+    <script>
+        function tableVal(){
+            let doc = document.forms[0];   //화면에 모든 폼태그 요소를 반환해줌->그래서 인덱스로 첫번째 폼태그를 지정해줬음
+            //console.log(doc.pw);
+            let vals = [doc.id.value, doc.pw.value, doc.addr.value, doc.phone.value]
+            
+            //val가 유효한지 확인.
+            for(let i=0;i<vals.length;i++){
+                if(vals[i]=="" || vals[i]==null){
+                    alert("모두 다 입력해주세요!~!~~!");
+                    return; //함수 종료
+                    //(break; : 분기문. 가장 가까운 반복문 종료)
+                }
+            }
+
+            let row = createRow(vals);
+            document.getElementById("addtr").appendChild(row);
+            
+        }
+        function createRow(vals){
+            var tr = document.createElement("tr");
+            
+            for(let i=0; i<vals.length; i++){
+                let td = document.createElement("td");
+                td.textContent = vals[i];
+                tr.appendChild(td);
+            }
+
+            let delTd = document.createElement("td");
+            delTd.innerHTML = "<input type='button' value='삭제' "+"onclick='delRow(this);'>";
+            tr.appendChild(delTd);
+            return tr;
+        }
+
+        function delRow(ele){
+            //console.log(ele.parentNode.parentNode);
+
+            document.getElementById("addtr").removeChild(ele.parentNode.parentNode);
+        }
+
+        function deleteVal(){
+            //let doc = document.getElementById("addtr").remove();
+            let tbody = document.getElementById("addtr");
+            // console.log(tbody.firstChild);
+            // console.log(tbody.lastChild);
+
+            //반복문
+            while(tbody.firstChild != null){
+                //tbody.firstChild.remove();
+                //removeChild를 이용하여 삭제
+                
+                tbody.removeChild(tbody.lastChild);
+                
+            }
+
+            //sibling(형제) : 형제요소 접근. 동일레벨에서 앞에있는 previousSibling. 다음에 있는 nextSibling 
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <table id="intable">
+            <tr>
+                <td>아이디 : </td>
+                <td><input type="text" name="id"></td>
+            </tr>
+            <tr>
+                <td>비밀번호 : </td>
+                <td><input type="text" name="pw"></td>
+            </tr>
+            <tr>
+                <td>주소 : </td>
+                <td><input type="text" name="addr"></td>
+            </tr>
+            <tr>
+                <td>전화번호 : </td>
+                <td><input type="text" name="phone"></td>
+            </tr>           
+            
+        </table>
+        <input type="button" value="추가" onclick="tableVal();">
+        <input type="button" value="삭제" onclick="deleteVal();">
+    </form>
+    <hr>
+    <div id="addtable">
+        <table border="1" id="ctb">
+            <col width="100px"><col width="100px"><col width="300px">
+            <col width="100px"><col width="100px">
+            <thead>
+                <tr>
+                    <th>아이디</th>
+                    <th>비밀번호</th>
+                    <th>주소</th>
+                    <th>전화번호</th>
+                    <th>삭제</th>
+                </tr>
+            </thead>
+            <tbody id="addtr"></tbody>
+        </table>
+    </div>
+</body>
+</html>

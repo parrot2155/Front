@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object객체</title>
+    <script>
+        function Test(){
+                let name01 = "가나다";  //외부에서 접근 불가
+                this.name02 = "다라마"; //외부에서 접근 가능 
+                //this.getname=function(){return name01;}
+        }
+
+        function objTest(){
+            //객체 생성
+            let obj1 = new Object(); //new->new 연산자,
+                                     //객체 생성자.
+                                    
+            let t = new Test();
+            console.log(t);                     //{이름:밸류, 이름:밸류}
+            console.log(t.name02);   //값을 출력하기  
+            //console.log(t.getName());
+            //객체 생성2 
+            let obj2 = {}; //객체 리터럴
+            let person = {
+                name:"박태욱",      //하나 하나를 속성(property)라고 부른다.
+                age:"53",
+                hobby:["movie","youtube"],
+                job:"computer",
+                ect:{},
+                100:200,
+                "like dog": true,    //공백이 들어가야 할때는 ""로 묶는다.
+                func:function(){alert("이런기능이있다.");}
+            };
+
+            console.log("-----------------");
+            //프로퍼티 다루는 방법
+            //1. 특정 프로퍼티 접근(점,괄호)
+            
+            console.log(person.name);
+            console.log(person["age"]);
+
+            let prop = "hobby";
+            console.log(person[prop]);
+            
+            console.log(person.name01); //undefined출력
+
+            //2. 추가도 가능하다.
+            person.addr = "하남시"; //그냥 때려박기
+            console.log(person);
+
+            //수정하기
+            person.addr = "경기도 하남시";
+            console.log(person);
+
+            //삭제하기
+            delete person.addr;
+            console.log(person);
+
+            //3.존재 유무 확인(in 연산자)
+            let res = "nameㅇㅌ고" in person;
+            console.log(res); //true 출력. person객체에 name이라는 속성이 존재한다.
+                              //없다면 false 출력
+
+            let park = new Class5();
+            let lee = new Class5();
+
+            console.log("---------------");
+            park.name = "mul";
+            console.log(park.name);
+            console.log(park.addr);
+
+            console.log(lee.name);
+            console.log(lee.addr);
+
+            let choi = new Class5_2();
+            let kim = new Class5_2();
+
+            Class5_2.prototype.tel = "010";   //fn class5를 만들면 프로토타입에 class5 prototype object가 만들어짐. 그 안에 생성자(constructor)가 만들어지고 그 안에 tel이 들어가있음. 그걸 기반으로 choi랑 kim.이 작동함. 그래서 choi나 kim에 직접 들어가있는건 아님. 직접 들어가있는건 name이랑 addr임. 재밌는건 class5 prototype object는 object prototype object를 참조함. 또 얘 위에 function object가 있음.
+            
+            console.log(choi.tel);
+            console.log(kim.tel);
+
+        }
+
+
+        function Class5(){
+            this.name = "multicampus";
+            this.addr = "seoul";
+
+        }
+
+        function Class5_2(){
+            this.name = "multi";
+        }
+    </script>
+</head>
+<body>
+    <h2>객체</h2>
+    <p>
+        객체 : 관련있는 데이터와 함수의 집합이다.
+        <br>
+        -함수 : 기능 정의<br>
+        -속성 : 객체 내부의 데이터<br>
+        -this : 객체 내부의 메소드나 속성을 정의할 때 사용
+        -프로토타입 : 객체의 확장
+
+        <button onclick="objTest();">객체</button>
+    </p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>start</title>
+    <script type="text/javascript" src="./js/test.js"></script><!--절대 스크립트 안에 내용을 적지마.-->
+</head>
+<body>
+    <h2>자바스크립트 사용법</h2>
+    <ol>
+        <li>태그에 직접 간단 소스코드를 작성해서 실행되게 하는 방법, inline</li>
+        <li>script 태그 영역에 작성해서 실행되게 하는 방법, interner</li>
+        <li>별도의 js파일로 작성해서 가져다 실행하는 방법, externer</li>
+    </ol>
+    <hr>
+    
+    <h3>inline</h3>
+    <ol>
+        <!-- 1. inline -->
+        <li onclick="window.alert('inline');">inline 방식</li>
+        <li onclick="a=function(){
+            alert('1234');
+        }();">inline 방식 바로 팡션 넣기</li>
+
+
+        <li onclick="internerTest();">interner 방식</li>
+        <script type="text/javascript">//위치는 어디든 가능. 그러나 보통 head에 많이 적는다.
+            function internerTest(){  //함수, 아래 기능을 실행하겠다.  양식->  function 이름 (){ 코드 }
+                let doc = document.getElementsByTagName("li")[1]; //[1]<-두번째임. 0부터 시작함.(인덱스)
+                doc.style.color="red";
+                console.log(doc);
+                }
+        </script>
+
+        <li onclick="test();">externer</li>
+    </ol>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom05</title>
+    <script>
+        function addAppend(){
+            let fieldset = document.getElementById("addEle");
+
+            let p = document.createElement("p");
+            //텍스트 추가
+            p.textContent = "자식태그들 중 마지막에 붙여 넣는다.!~!"
+
+            fieldset.appendChild(p);
+        }
+
+        function addBefore(){
+            let fieldset = document.getElementById("addEle");
+
+            let newP = document.createElement("p");
+
+            newP.textContent = "맨 앞에 붙여넣는다.";
+
+            let div = document.querySelector("fieldset > div");
+            fieldset.insertBefore(newP,div);   //div태그 앞에 newP를 붙인다.
+        }
+
+        function moveEle(){
+            let ele = document.querySelector("fieldset").children[1];
+            console.log(ele);
+            document.body.appendChild(ele);
+        }
+
+
+
+        
+        function addTest(){
+            let test01 = document.getElementById("test01");
+            let newDiv = document.createElement("div");
+            newDiv.textContent = "dom test!";
+
+            test01.appendChild(newDiv);
+        }
+
+        //////////////////////////////
+        function moveTest(){
+            let ele = document.getElementById("test01").children[0];
+            let test02 = document.getElementById("test02");
+
+            test02.appendChild(ele);
+        }
+        //////////////////////////////
+
+    </script>
+</head>
+<body>
+    <h1>태그 추가</h1>
+    <button onclick="addAppend();">appendChild()</button>
+    <button onclick="addBefore();">insertBefore()</button>
+    <button onclick="moveEle();">Move Element</button>
+
+    <fieldset id="addEle">
+        <legend>부모태그</legend>
+        <div>div태그</div>
+    </fieldset>
+
+    <!--  -->
+    <h3>1. test01태그에 "dom test"라는 내용을 가진 div태그를 추가
+        <button onclick="addTest();">클릭!</button>
+    </h3>
+    <h3>2. test01태그에 추가된 태그들을 test02로 이동시켜보자
+        <button onclick="moveTest();">클릭!!</button>
+    </h3>
+
+    *test01*
+    <div id="test01"></div>
+    *test02*
+    <div id="test02"></div>
+
+</body>
+</html>

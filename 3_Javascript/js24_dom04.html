@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom04</title>
+    <style>
+        img{
+            width: 300px;
+            height: 300px;
+            vertical-align: middle;
+        }
+        a{
+            font-size: 30px;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        //문서를 위에서부터 읽기 때문에 여기다 바로 엘리먼트를 지정해서 함수를 돌리면 안돌아간다.
+        //1. 엘리먼트 코드 밑에 스크립트를 쓰거나
+        //2. window.onload 를 사용한다. : 문서를 전부 읽은 후에 실행시킨다.
+
+        window.onload=function(){
+            let count = 1;
+
+            let aTags = document.querySelectorAll("a");
+            let img = document.querySelector("img");
+
+            //왼쪽 a태그
+            aTags[0].onclick=()=>{
+                let imgAlt = img.getAttribute("alt");
+                if(imgAlt == "img01"){
+                    count=3;
+                    img.setAttribute("alt","img03");
+                    img.setAttribute("src","../1_html/sample/images/img03.png");
+                }else{
+                    img.setAttribute("alt","img0"+(--count));
+                    img.setAttribute("src","../1_html/sample/images/img0"+count+".png");
+                }
+
+                
+            }
+
+            //오른쪽 a태그
+            aTags[1].onclick=()=>{
+                let imgAlt = img.getAttribute("alt");
+                if(imgAlt == "img03"){
+                    count=1;
+                    img.setAttribute("alt","img01");
+                    img.setAttribute("src","../1_html/sample/images/img01.png");
+                }else{
+                    img.setAttribute("alt","img0"+(++count));
+                    img.setAttribute("src","../1_html/sample/images/img0"+count+".png");
+                }
+
+                
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <div>
+        <a id="lt" href="#"> ◀ </a>
+        <img alt="img01" src="../1_html/sample/images/img01.png">
+        <a id="rt" href="#"> ▶ </a>
+
+    </div>
+</body>
+</html>

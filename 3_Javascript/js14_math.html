@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>math</title>
+    <style>
+        div{
+            border: solid 2px rgb(0, 0, 0);
+            height: 150px;
+            width: 300px;
+        }
+    </style>
+    <script>
+        const mathTest=()=>{
+            let doc = document.getElementsByTagName("div")[0];
+            let num = -123;
+
+            //abs() : 절댓값을 구해주는 기능
+            doc.innerHTML += "절댓값 : " + Math.abs(num) + "<br>";
+            
+            //random() : 임의의 난수 발생. 범위는 0~1 사이의 값.
+            doc.innerHTML += "임의의 난수 : " + Math.random() + "<br>";
+
+            //round() : 반올림, floor() : 내림, ceil() : 올림
+            doc.innerHTML += "반올림 : " + Math.round(123.556) + "<br>";
+            doc.innerHTML += "내림 : " + Math.floor(123.556) + "<br>";
+            doc.innerHTML += "올림 : " + Math.ceil(123.236) + "<br>";
+
+
+            //
+            doc.innerHTML += "Pi : "+ Math.PI + "<br>" + "오일러 상수 : " + Math.E + "<br>";
+        }
+
+        function randomBgColor(){
+            let rNum = function(){
+                //return Math.floor(Math.random()*100+1); //1~100.9999에서 소수점 버리기.=1~100
+
+
+                return Math.floor(Math.random()*256);
+            } 
+            console.log(rNum());
+            document.body.style.backgroundColor = "rgb("+rNum()+","+rNum()+","+rNum()+")";
+            
+        }
+    </script>
+</head>
+<body>
+    <h1>Math 객체</h1>
+    <div></div>
+    <button onclick="mathTest();">확인</button>
+
+    <hr>
+    <h2>랜덤으로 배경색을 설정하기</h2>
+    <button onclick="randomBgColor();">배경색 변경</button>
+</body>
+</html>
